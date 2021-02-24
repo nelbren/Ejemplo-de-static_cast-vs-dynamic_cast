@@ -1,4 +1,4 @@
-// 2020-08-26 - nelbren@nelbren.com 
+// 2020-02-24 - nelbren@nelbren.com 
 #include <iostream>
 #include <vector>
 #include "SistemaOperativo.hpp"
@@ -20,7 +20,11 @@ int main() {
     #else
     Linux *derivadaPtr = static_cast < Linux * >( soPtr );
     #endif
-    if ( derivadaPtr != nullptr ) {
+    if (typeid(*soPtr) == typeid(Linux)) cout << " I'm from the community!" << endl;
+    if (typeid(*soPtr) == typeid(Windows)) cout << " I'm from Microsoft!" << endl;
+    if (typeid(*soPtr) == typeid(Mac)) cout << " I'm from apple!" << endl;
+    if ( derivadaPtr ) {
+       if (typeid(*derivadaPtr) == typeid(Linux)) cout << "  and I'm a Penguin!" << endl;
        derivadaPtr->distro = "debian";
        cout << "   " << derivadaPtr->nombre() << " => " << derivadaPtr->distro; 
        cout << " - Paquetes: " << derivadaPtr->aplicaciones() << endl;
